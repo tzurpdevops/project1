@@ -16,9 +16,9 @@ pipeline {
         }
 	stage('Build and Run Docker Image') {
             steps {
-                   sh "docker build -t project1-image && \
-                   docker run --name project1-container -d -p 50000:50000 project1-image && \
-		   docker ps"" 
+                   sh "docker build -t project1-image"
+                   sh "docker run --name project1-container -d -p 50000:50000 project1-image"
+		   sh "docker ps" 
             }
         }
         stage('Test') {
