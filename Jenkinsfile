@@ -4,17 +4,17 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                // Add build steps here
+                sh "echo 'hello project1'"
             }
         }
         stage('Test') {
             steps {
-                // Add test steps here
+                sh "echo 'hello test"
             }
         }
         stage('Deploy') {
             steps {
-                // Add deployment steps here
+                sh "echo 'hello deploy'"
             }
         }
     }
