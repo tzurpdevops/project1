@@ -18,7 +18,7 @@ pipeline {
             steps {
                 sh "echo hello test"
 		sh "ls & ls tests/"
-		sh "tests/unittest.sh"
+		sh "cd tests & ./unittest.sh"
             }
         }
         stage('Deploy') {
