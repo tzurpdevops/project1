@@ -6,6 +6,8 @@ WORKDIR /app
 
 COPY ./requirements.txt .
 
+COPY ./tests/unittest.sh .
+
 RUN pip install -r requirements.txt
 
 COPY /app .
