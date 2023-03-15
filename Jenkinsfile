@@ -15,6 +15,9 @@ pipeline {
             }
         }
 	stage('Build and Run Docker Image') {
+		environment {
+ 		 PATH = "${PATH}:/usr/local/bin"
+		}
             steps {
                    sh "sudo docker build -t project1-image"
                    sh "sudo docker run --name project1-container -d -p 50000:50000 project1-image"
