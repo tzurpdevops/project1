@@ -16,6 +16,7 @@ pipeline {
         }
         stage('Test') {
             steps {
+		sh "python3 app.py"
                 sh "echo hello test"
 		sh "ls & ls tests/"
 		sh "cd tests & ./unittest.sh"
