@@ -14,6 +14,14 @@ pipeline {
 	      )
             }
         }
+	stage('Build and Run Docker Image') {
+            steps {
+                script {
+                    def image = docker.build('project1-image')
+                    image.run('--name project1-container -d -p 50000:50000')
+                }
+            }
+        }
         stage('Test') {
             steps {
 		sh "python3 app.py"
