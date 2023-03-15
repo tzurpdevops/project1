@@ -2,9 +2,16 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Pull project') {
             steps {
-                sh "echo 'hello project1'"
+                checkout([$class: 'GitSCM',
+                          branches: [[name: '*/main']],
+                          doGenerateSubmoduleConfigurations: false,
+                          extensions: [],
+                          submoduleCfg: [],
+                          userRemoteConfigs: [[url: 'https://github.com/tzurpdevops/project1.git']]
+			]
+	      )
             }
         }
         stage('Test') {
