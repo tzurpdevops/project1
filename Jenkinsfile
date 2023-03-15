@@ -17,7 +17,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh "echo hello test"
-		sh "./tests/unittest.sh"
+		sh "../tests/unittest.sh"
             }
         }
         stage('Deploy') {
