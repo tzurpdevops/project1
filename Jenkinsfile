@@ -15,6 +15,7 @@ pipeline {
         }
         stage('Build and Run Docker Image') {
             steps {
+		sh "ls"
 			script {
                def dockerImage = docker.build("project1-image")
             	}
