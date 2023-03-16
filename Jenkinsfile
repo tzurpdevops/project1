@@ -13,16 +13,13 @@ pipeline {
                           ])
             }
         }
-	/*
         stage('Build and Run Docker Image') {
             steps {
-		sh "docker --version"
-                sh "docker build -t project1-image ."
-                sh "docker run --name project1-container -d -p 50000:50000 project1-image"
-                sh "docker ps" 
+			script {
+               def dockerImage = docker.build("project1-image")
+            	}
             }
         }
-*/
         stage('Test') {
             steps {
               //  sh "python3 app.py"
