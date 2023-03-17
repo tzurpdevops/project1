@@ -17,6 +17,7 @@ pipeline {
             steps {
 		sh "ls"
 		sh "docker --version"
+		sh "ls app"
             }
         }
         stage('Test') {
