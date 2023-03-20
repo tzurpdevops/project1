@@ -20,7 +20,7 @@ pipeline {
                 // Build the Docker image
                 docker.build('proj1-app', '.')
                 // Run the Docker container
-                env.dockerContainer = docker.run('-p 5000:5000 proj1-app')
+                env.dockerContainer = docker.run('-p 5000:5000 --network proj1-network proj1-app')
                 }
             }
         }
