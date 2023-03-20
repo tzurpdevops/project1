@@ -15,13 +15,13 @@ pipeline {
         }
         stage('Build and Run Docker Image') {
             steps {
-		sh "ls"
-		script {
-		// Build the Docker image
-   		docker.build('proj1-app', dockerfile)
-		// Run the Docker container
-   		def dockerContainer = docker.run('-p 5000:5000 proj1-app')
-		}
+                sh "ls"
+                script {
+                // Build the Docker image
+                docker.build('proj1-app', '.')
+                // Run the Docker container
+                env.dockerContainer = docker.run('-p 5000:5000 proj1-app')
+                }
             }
         }
         stage('Test') {
@@ -32,10 +32,13 @@ pipeline {
                 sh "cd tests && ./unittest.sh"
             }
         }
-        stage('Deploy') {
-            steps {
-                sh "echo 'hello deploy'"
+        post {
+        always {
+            script {
+                // Stop and remove the Docker container
+                env.dockerContainer.stop()
+                env.dockerContainer.remove()
             }
         }
-    }
+	}
 }
