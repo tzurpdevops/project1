@@ -16,10 +16,12 @@ pipeline {
         stage('Build and Run Docker Image') {
             steps {
 		sh "ls"
+		script {
 		// Build the Docker image
    		docker.build('proj1-app', dockerfile)
 		// Run the Docker container
    		def dockerContainer = docker.run('-p 5000:5000 proj1-app')
+		}
             }
         }
         stage('Test') {
