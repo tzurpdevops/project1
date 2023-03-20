@@ -16,6 +16,7 @@ pipeline {
         stage('Build and Run Docker Image') {
             steps {
                 sh "ls"
+		sh "docker --version"
                 script {
                 // Build the Docker image
                 docker.build('proj1-app', '.')
