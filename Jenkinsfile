@@ -33,15 +33,13 @@ pipeline {
             }
         }
 	}
-		post {
+	post {
         always {
-            stage('Teardown') {
-                steps {
-                    script {
-                        // Stop and remove the Docker container
-                        env.dockerContainer.stop()
-                        env.dockerContainer.remove()
-                    }
+            steps {
+                script {
+                    // Stop and remove the Docker container
+                    env.dockerContainer.stop()
+                    env.dockerContainer.remove()
                 }
             }
         }
