@@ -31,9 +31,8 @@ pipeline {
                 sh "ls && ls tests/"
                 sh "cd tests && ./unittest.sh"
             }
-        }
-        post {
-        always {
+			post {
+			always {
             stage('Teardown') {
                 steps {
                     script {
@@ -43,7 +42,8 @@ pipeline {
                     }
                 }
             }
+			}
+			}
         }
-      }
     }
 }
