@@ -32,16 +32,18 @@ pipeline {
                 sh "cd tests && ./unittest.sh"
             }
         }
-        stage('Teardown') {
-		post {
-		always {
-            	script {
-                // Stop and remove the Docker container
-                env.dockerContainer.stop()
-                env.dockerContainer.remove()
-           	}
-		}
-		}
-	}
+        post {
+        always {
+            stage('Teardown') {
+                steps {
+                    script {
+                        // Stop and remove the Docker container
+                        env.dockerContainer.stop()
+                        env.dockerContainer.remove()
+                    }
+                }
+            }
+        }
+      }
     }
 }
