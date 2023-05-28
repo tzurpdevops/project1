@@ -4,6 +4,6 @@ if [[ $response == "Hello Tzur" ]]; then
   exit 0 # success exit status
 else
   exit 1 # failure exit status
-fi
+
 
 
